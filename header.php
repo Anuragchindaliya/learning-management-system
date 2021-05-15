@@ -15,6 +15,7 @@
     <!-- Libs CSS -->
     <!-- Theme CSS -->
     <link rel="stylesheet" href="assets/css/theme.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
     <!-- Simply beautiful open source icons -->
     <link href="assets/fonts/feather/feather.css" rel="stylesheet" />
@@ -37,6 +38,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css" integrity="sha512-nIm/JGUwrzblLex/meoxJSPdAKQOe2bLhnrZ81g5Jbh519z8GFJIWu87WAhBH+RAyGbM4+U3S2h+kL5JoV6/wA==" crossorigin="anonymous" />
 
     <!-- Bootstrap-select is a jQuery plugin that overhauls select elements to improve their appearance and expand their functionality. -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css" integrity="sha512-nIm/JGUwrzblLex/meoxJSPdAKQOe2bLhnrZ81g5Jbh519z8GFJIWu87WAhBH+RAyGbM4+U3S2h+kL5JoV6/wA==" crossorigin="anonymous" />
 
     <!-- lightweight, efficient Tags input component in Vanilla JS / React / Angular [super customizable, tiny size & top performance -->
@@ -53,14 +57,14 @@
 
 
 
-    <title>Geeks Academy Admin Template</title>
+    <title>Geeks Academy by Anurag</title>
 </head>
 
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-default">
         <div class="container-fluid px-0">
-            <a class="navbar-brand" href="index.php"><img src="assets/images/brand/logo/logo.svg" alt="" /></a>
+            <a class="navbar-brand" href="./"><img src="assets/images/brand/logo/logo.svg" alt="" /></a>
 
 
             <?php if (isset($_SESSION['is_login'])) { ?>

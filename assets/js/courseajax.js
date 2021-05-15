@@ -42,7 +42,7 @@ $(document).ready(function () {
 function readRecords(){
     var readFlag = "readRecord";
     var course_admin = $("#adminName").text().trim();
-    console.log(course_admin);
+    // console.log(course_admin);
     $.ajax({
         url:"../../admin/adminprocess.php",
         type:"post",

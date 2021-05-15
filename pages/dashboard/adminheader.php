@@ -1,5 +1,5 @@
-<?php 
-if(!isset($_SESSION)){
+<?php
+if (!isset($_SESSION)) {
     session_start();
 }
 
@@ -8,6 +8,8 @@ if ($_SESSION['is_admin_login'] != true) {
     header('Location: ../../index.php');
     exit;
 }
+$activePage = basename($_SERVER['PHP_SELF'], ".php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,16 +24,17 @@ if ($_SESSION['is_admin_login'] != true) {
     <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon/favicon.ico">
 
 
-    
-    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
- 
- 
+
+    <!-- <link rel="stylesheet" type="text/css" href="/DataTables/datatables.css"> -->
+
+
     <!-- Libs CSS -->
 
     <link href="../../assets/fonts/feather/feather.css" rel="stylesheet" />
     <link href="../../assets/libs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="../../assets/libs/dragula/dist/dragula.min.css" rel="stylesheet" />
-    <link href="../../assets/libs/%40mdi/font/css/materialdesignicons.min.css" rel="stylesheet" />
+    <!-- MaterialDesign web font, icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css" integrity="sha512-vIgFb4o1CL8iMGoIF7cYiEVFrel13k/BkTGvs0hGfVnlbV6XjAA0M0oEHdWqGdAVRTDID3vIZPOHmKdrMAUChA==" crossorigin="anonymous" />
     <link href="../../assets/libs/prismjs/themes/prism.css" rel="stylesheet" />
     <link href="../../assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
     <link href="../../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet" />
@@ -41,13 +44,13 @@ if ($_SESSION['is_admin_login'] != true) {
     <link href="../../assets/libs/tippy.js/dist/tippy.css" rel="stylesheet">
 
 
-<!-- databale css -->
+    <!-- databale css -->
 
 
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="../../assets/css/theme.min.css">
-    
+
     <title>Dashboard | MDU - Academy Admin </title>
 </head>
 
@@ -58,24 +61,24 @@ if ($_SESSION['is_admin_login'] != true) {
         <nav class="navbar-vertical navbar">
             <div class="nav-scroller">
                 <!-- Brand logo -->
-                <a class="navbar-brand" href="../../index.php"><img src="../../assets/images/brand/logo/logo-inverse.svg" alt="" /></a>
+                <a class="navbar-brand" href="./admin-dashboard.php"><img src="../../assets/images/brand/logo/logo-inverse.svg" alt="" /></a>
                 <!-- Navbar nav -->
                 <ul class="navbar-nav flex-column" id="sideNavbar">
                     <!-- Nav item -->
                     <li class="nav-item">
-                        <a class="nav-link " href="#!" data-toggle="collapse" data-target="#navDashboard" aria-expanded="true" aria-controls="navDashboard">
+                        <a class="nav-link " href="#!" data-toggle="collapse" data-target="#navDashboard" aria-expanded="false" aria-controls="navDashboard">
                             <i class="nav-icon fe fe-home mr-2"></i>Dashboard
                         </a>
-                        <div id="navDashboard" class="collapse show" data-parent="#sideNavbar">
+                        <div id="navDashboard" class="collapse <?= ($activePage==='admin-dashboard' || $activePage==='dashboard-analytics')?'show':'';?>" data-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="admin-dashboard.php">
+                                    <a class="nav-link <?= ($activePage==='admin-dashboard')?'active':'';?> " href="admin-dashboard.php">
                                         Overview
                                     </a>
                                 </li>
                                 <!-- Nav item -->
                                 <li class="nav-item ">
-                                    <a class="nav-link " href="dashboard-analytics.php">
+                                    <a class="nav-link <?= ($activePage==='dashboard-analytics')?'active':'';?>" href="dashboard-analytics.php">
                                         Analytics <span class="badge badge-warning ml-2">New</span>
                                     </a>
                                 </li>
@@ -87,18 +90,18 @@ if ($_SESSION['is_admin_login'] != true) {
                         <a class="nav-link " href="#!" data-toggle="collapse" data-target="#navCourses" aria-expanded="false" aria-controls="navCourses">
                             <i class="nav-icon fe fe-book mr-2"></i>Courses
                         </a>
-                        <div id="navCourses" class="collapse" data-parent="#sideNavbar">
+                        <div id="navCourses" class="collapse <?= ($activePage==='admin-course-overview' || $activePage==='admin-course-category' || $activePage==='admin-course-category-single')?'show':'';?>" data-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin-course-overview.php">All Courses
+                                    <a class="nav-link  <?= ($activePage==='admin-course-overview')?'active':'';?>" href="admin-course-overview.php">All Courses
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin-course-category.php">Courses Category
+                                    <a class="nav-link <?= ($activePage==='admin-course-category')?'active':'';?>" href="admin-course-category.php">Courses Category
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin-course-category-single.php"> Category
+                                    <a class="nav-link <?= ($activePage==='admin-course-category-single')?'active':'';?>" href="admin-course-category-single.php"> Category
                                         Single</a>
                                 </li>
                             </ul>
@@ -109,14 +112,14 @@ if ($_SESSION['is_admin_login'] != true) {
                         <a class="nav-link " href="#!" data-toggle="collapse" data-target="#navProfile" aria-expanded="false" aria-controls="navProfile">
                             <i class="nav-icon fe fe-user mr-2"></i>User
                         </a>
-                        <div id="navProfile" class="collapse " data-parent="#sideNavbar">
+                        <div id="navProfile" class="collapse  <?= ($activePage==='admin-instructor' || $activePage==='admin-students')?'show':'';?>" data-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link " href="admin-instructor.php">Instructor
+                                    <a class="nav-link <?= ($activePage==='admin-instructor')?'active':'';?>" href="admin-instructor.php">Instructor
                                     </a>
                                 </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="admin-students.php">Students</a>
+                                <li class="nav-item">
+                                    <a class="nav-link <?= ($activePage==='admin-students')?'active':'';?>" href="admin-students.php">Students</a>
                                 </li>
                             </ul>
                         </div>
@@ -126,22 +129,23 @@ if ($_SESSION['is_admin_login'] != true) {
                         <a class="nav-link " href="#!" data-toggle="collapse" data-target="#navCMS" aria-expanded="false" aria-controls="navCMS">
                             <i class="nav-icon fe fe-book-open mr-2"></i>CMS
                         </a>
-                        <div id="navCMS" class="collapse " data-parent="#sideNavbar">
+                        <div id="navCMS" class="collapse <?= ($activePage==='admin-cms-overview' || $activePage==='admin-cms-post' || $activePage==='admin-cms-post-new'|| $activePage==='admin-cms-post-category')?'show':'';?>" data-parent="#sideNavbar">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin-cms-overview.php">Overview
+                                    <a class="nav-link <?= ($activePage==='admin-cms-overview')?'active':'';?>" href="admin-cms-overview.php">Overview
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin-cms-post.php">All Post
+                                
+                                    <a class="nav-link <?= ($activePage==='admin-cms-post')?'active':'';?>" href="admin-cms-post.php">All Post
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin-cms-post-new.php">New Post
+                                    <a class="nav-link <?= ($activePage==='admin-cms-post-new')?'active':'';?>" href="admin-cms-post-new.php">New Post
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="admin-cms-post-category.php"> Category</a>
+                                    <a class="nav-link <?= ($activePage==='admin-cms-post-category')?'active':'';?>" href="admin-cms-post-category.php"> Category</a>
                                 </li>
                             </ul>
                         </div>
@@ -455,7 +459,7 @@ if ($_SESSION['is_admin_login'] != true) {
                                     </li>
                                 </ul>
                                 <div class="border-top px-3 pt-3 pb-0">
-                                    <a href="notification-history.html" class="text-link font-weight-semi-bold">See all
+                                    <a href="notification-history.php" class="text-link font-weight-semi-bold">See all
                                         Notifications</a>
                                 </div>
                             </div>
@@ -520,12 +524,12 @@ if ($_SESSION['is_admin_login'] != true) {
                                         </ul>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="../profile-edit.html">
+                                        <a class="dropdown-item" href="./admin-profile-edit.php">
                                             <i class="fe fe-user mr-2"></i>Profile
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="../student-subscriptions.html">
+                                        <a class="dropdown-item" href="../student-subscriptions.php">
                                             <i class="fe fe-star mr-2"></i>Subscription
                                         </a>
                                     </li>

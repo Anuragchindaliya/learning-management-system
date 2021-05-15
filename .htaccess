@@ -1,0 +1,17 @@
+RewriteEngine On
+
+#for remove the .php extension from url
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+#for redirected to https 
+RewriteCond %{HTTP_HOST} ^bankblaze\.in [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://www.bankblaze.in/$1 [R,L]
+
+ErrorDocument 400 404-error.php
+ErrorDocument 401 404-error.php
+ErrorDocument 403 404-error.php
+ErrorDocument 404 http://localhost/geeks-online/404-error.php
+ErrorDocument 500 404-error.php
+ErrorDocument 503 404-error.php

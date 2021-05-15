@@ -1,5 +1,5 @@
-<base href="../">
-<?php include_once "../header.php"; ?>
+
+<?php include_once "./adminheader.php"; ?>
 
 	<div class="pt-5 pb-5">
 		<div class="container">
@@ -8,14 +8,14 @@
 				<div class="col-xl-12 col-lg-12 col-md-12 col-12">
 					<!-- Bg -->
 					<div class="pt-16 rounded-top" style="
-								background: url(assets/images/background/profile-bg.jpg) no-repeat;
+								background: url(../../assets/images/background/profile-bg.jpg) no-repeat;
 								background-size: cover;
 							"></div>
 					<div
 						class="d-flex align-items-end justify-content-between bg-white px-4 pt-2 pb-4 rounded-none rounded-bottom shadow-sm">
 						<div class="d-flex align-items-center">
 							<div class="mr-2 position-relative d-flex justify-content-end align-items-end mt-n5">
-								<img src="assets/images/avatar/avatar-3.jpg" class="avatar-xl rounded-circle border-width-4 border-white"
+								<img src="../../assets/images/avatar/avatar-3.jpg" class="avatar-xl rounded-circle border-width-4 border-white"
 									alt="" />
 							</div>
 							<div class="lh-1">
@@ -133,7 +133,7 @@
 						<div class="card-body">
 							<div class="d-lg-flex align-items-center justify-content-between">
 								<div class="d-flex align-items-center mb-4 mb-lg-0">
-									<img src="assets/images/avatar/avatar-3.jpg" id="img-uploaded" class="avatar-xl rounded-circle" alt="" />
+									<img src="../../assets/images/avatar/avatar-3.jpg" id="img-uploaded" class="avatar-xl rounded-circle" alt="" />
 									<div class="ml-3">
 										<h4 class="mb-0">Your avatar</h4>
 										<p class="mb-0">
@@ -224,4 +224,4 @@
 
 
 	<!-- Scripts -->
-	<?php include_once "../footer.php"; ?>
+	<?php include_once "./adminfooter.php"; ?>

@@ -13,7 +13,7 @@
                         entrepreneur.
                     </p>
                     <a href="pages/course/course-filter-list.php" class="btn btn-success">Browse Courses</a>
-                    <a href="admin/adminsignin.php" class="btn btn-white">Are You Instructor?</a>
+                    <a href="admin/adminsignin.php" class="btn btn-white instructor">Are You Instructor?</a>
                 </div>
             </div>
             <div class=" col-xl-7 col-lg-6 col-md-12 text-lg-right text-center">
