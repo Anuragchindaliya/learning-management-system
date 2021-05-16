@@ -47,20 +47,20 @@
                     <form id="addcourse">
                         <div class="form-group">
                             <label for="courseTitle" class="form-label">Course Title</label>
-                            <input id="courseTitle" class="form-control" type="text" placeholder="Course Title">
+                            <input id="courseTitle" class="form-control" type="text" placeholder="Course Title" required>
                             <small>Write a 60 character course title.</small>
                         </div>
 
                         <div class="form-group">
                             <label for="courseDesc" class="form-label">Course Description</label>
-                            <input id="courseDesc" class="form-control" type="text" placeholder="Course Description">
+                            <input id="courseDesc" class="form-control" type="text" placeholder="Course Description" required>
                             <small>Write a 250 character course description.</small>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label">Courses category</label>
                             <div class="dropdown bootstrap-select" style="width: 100%;">
-                                <select class="selectpicker" data-width="100%">
+                                <select id="defaultSelect" class="selectpicker" data-width="100%" required>
                                     <option value="">Select category</option>
                                     <option value="React">React</option>
                                     <option value="Javascript">Javascript</option>
@@ -87,7 +87,7 @@
                         <div class="form-group">
                             <label class="form-label">Courses level</label>
                             <div class="dropdown bootstrap-select" style="width: 100%;">
-                                <select class="selectpicker" data-width="100%">
+                                <select class="selectpicker" data-width="100%" required>
                                     <option value="">Select level</option>
                                     <option value="intermediate">Intermediate</option>
                                     <option value="Beignners">Beignners</option>
@@ -174,7 +174,7 @@
                                 <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
                                 <div class="ql-tooltip ql-hidden">
                                     <a class="ql-preview" rel="noopener noreferrer" target="_blank" href="about:blank"></a>
-                                    <input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL">
+                                    <input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL" required>
                                     <a class="ql-action"></a>
                                     <a class="ql-remove"></a>
                                 </div>
@@ -185,7 +185,9 @@
                         <div style="display: flex;    gap: 1rem;    justify-content: flex-end;">
                         <input type="hidden" id="course_id">
                             <button type="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" >Add course</button>
+                            <input type="reset" class="btn btn-primary" id="clearText" value="clear" onclick="$('.selectpicker').selectpicker('refresh');"></input>
+                            <input type="submit" class="btn btn-primary" id="addCourseBtn" value="Add course"></input>
+                            
                         </div>
                     </form>
 

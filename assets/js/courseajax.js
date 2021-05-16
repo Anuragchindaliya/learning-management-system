@@ -7,6 +7,8 @@ $(document).ready(function () {
     // admin insert course #############
     $("#addcourse").submit(function (event) {
         // console.log("hllo");
+        $("#addCourseBtn").val('Please wait');
+        $("#addCourseBtn").attr('disabled',true);
         
         var course_title = $("#courseTitle").val();
         var course_desc = $("#courseDesc").val();
@@ -24,6 +26,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 // console.log(data);
+                $("#addCourseBtn").attr('disabled',false);
                 $("#addModal").modal("hide");
                 $("#addcourse").trigger("reset");
                 $("#addcourse #course_id").val("");
@@ -36,7 +39,18 @@ $(document).ready(function () {
         event.preventDefault();
         return false;
     });  
+
+
+
+
+
+    
 });
+
+// ///
+// $('#clearText').click(function(){
+//     $('.selectpicker').selectpicker('refresh');
+// })
 
 // retrieve (get) course from database
 function readRecords(){
@@ -53,6 +67,8 @@ function readRecords(){
         success: function(data){
             // console.log(data);
             $("#addcourse").trigger("reset");
+            //to deselect all the value after submision
+            $('.selectpicker').selectpicker('refresh');
             $("#course_table").html(data);
         }
     })

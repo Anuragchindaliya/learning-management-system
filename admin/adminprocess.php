@@ -37,6 +37,7 @@ if (!isset($_SESSION['is_admin_login'])) {
 #############################
 if(isset($_SESSION)){
 if (isset($_POST['course_title']) && isset($_POST['course_desc'])) {
+    sleep(3);
     $courseTitle = $_POST['course_title'];
     $courseDesc = $_POST['course_desc'];
     $adminName = $_POST['course_admin'];
