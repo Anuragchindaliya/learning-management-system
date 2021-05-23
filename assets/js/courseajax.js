@@ -6,6 +6,8 @@ $(document).ready(function () {
 
     // admin insert course #############
     $("#addcourse").submit(function (event) {
+            
+            
         // console.log("hllo");
         $("#addCourseBtn").val('Please wait');
         $("#addCourseBtn").attr('disabled',true);
@@ -14,25 +16,45 @@ $(document).ready(function () {
         var course_desc = $("#courseDesc").val();
         var course_id = $("#course_id").val();
         var course_admin = $("#adminName").text().trim();
-
+        var course_image = $("#courseImage").val();
+        var course_category = $("#courseCategory").val();
+        var course_level = $("#courseLevel").val();
+        // var course_fees = new Intl.NumberFormat('en-IN').format($("#courseFees").val());
+        var course_fees = $("#courseFees").val();
+        
         $.ajax({
             url: "../../admin/adminprocess.php",
             method: "post",
-            data: {
+            dataType:"json",
+            data:{
+                add_course:'add_course',
                 course_title: course_title,
                 course_desc: course_desc,
                 course_admin: course_admin,
                 course_id:course_id,
+                course_image:course_image,
+                course_category:course_category,
+                course_level:course_level,
+                course_fees:course_fees
+            },
+            // processData:false,
+            // contentType:false,
+            beforeSend:function(){
+                console.log("Wait...")
             },
             success: function (data) {
-                // console.log(data);
+                console.log(data);
                 $("#addCourseBtn").attr('disabled',false);
+                $("#addCourseBtn").val('Add course');
                 $("#addModal").modal("hide");
                 $("#addcourse").trigger("reset");
                 $("#addcourse #course_id").val("");
 
                 readRecords();
 
+            },
+            error: function(err){
+                console.log("Opps something went wrong ",err.responseText);
             }
         });
 
@@ -40,12 +62,37 @@ $(document).ready(function () {
         return false;
     });  
 
-
+    // timing field for course duration
+   
 
 
 
     
 });
+
+
+
+//image validation
+function checkImage(image){
+    var formData = new FormData();
+    var file = $("#courseImage").prop('files')[0];
+    formData.append("Filedata", file);
+    var t = file.type.split('/').pop().toLowerCase();
+    if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
+        alert('Please select a valid image file');
+        $("#courseImage").val('');
+        return false;
+    }
+    if (file.size > 1024000) {
+        alert('Max Upload size is 1MB only');
+        $("#courseImage").val('');
+        return false;
+    }
+    console.log(image);
+    return image;
+}
+
+
 
 // ///
 // $('#clearText').click(function(){
@@ -76,7 +123,7 @@ function readRecords(){
 
 // delete course from database
 function deleteCourse(deleteId){
-    
+    // mythis = this;
     swal({
         title: "Are you sure?",
         text: "Once deleted, you will not be able to recover this Course!",
@@ -86,6 +133,8 @@ function deleteCourse(deleteId){
       })
       .then((willDelete) => {
         if (willDelete) {
+
+            // $(mythis).closest("tr").fadeOut();
           swal("Poof! Your Course has been deleted!", {
             icon: "success",
             
@@ -98,6 +147,7 @@ function deleteCourse(deleteId){
                     deleteId:deleteId,
                 },
                 success:function(data){
+                    
                     
                     readRecords();
                 }

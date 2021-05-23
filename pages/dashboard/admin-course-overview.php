@@ -1,4 +1,3 @@
-
 <?php include_once "adminheader.php"; ?>
 <!-- Container fluid -->
 <div class="container-fluid p-4">
@@ -30,7 +29,7 @@
         </div>
     </div>
 
-<!-- addcourse modal start from here -->
+    <!-- addcourse modal start from here -->
 
     <div class="modal fade gd-example-modal-lg" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -44,29 +43,56 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="addcourse">
+                    <form id="addcourse" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="courseTitle" class="form-label">Course Title</label>
-                            <input id="courseTitle" class="form-control" type="text" placeholder="Course Title" required>
+                            <input id="courseTitle" class="form-control" type="text" placeholder="Course Title" name="courseTitle" required>
                             <small>Write a 60 character course title.</small>
                         </div>
 
                         <div class="form-group">
                             <label for="courseDesc" class="form-label">Course Description</label>
-                            <input id="courseDesc" class="form-control" type="text" placeholder="Course Description" required>
+                            <input id="courseDesc" class="form-control" type="text" placeholder="Course Description" name="courseDescription" required>
                             <small>Write a 250 character course description.</small>
                         </div>
 
                         <div class="form-group">
+                            <label for="courseImage" class="form-label">Course Image</label>
+                            <div class="form-group d-grid" style="grid-template-columns: 70% 30%;">
+                                <input id="courseImage" class="form-control" type="file" placeholder="Course Image" name="coursePhoto" required>
+                                <label id="setImage" class="btn btn-primary" onclick="checkImage($('#setImage'))">Upload image</label>
+                                <small>Image should less than 100kb*</small>
+                            </div>
+
+
+
+                        </div>
+                        <!-- 
+                        <div class="input-group">
+                            <label for="courseDesc" class="form-label">Course Image</label>
+                            <input id="courseDesc" class="form-control" type="file" placeholder="Course Image" required>
+                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                            <small>Write a 250 character course description.</small>
+                        </div> -->
+
+                        <div class="form-group">
                             <label class="form-label">Courses category</label>
                             <div class="dropdown bootstrap-select" style="width: 100%;">
-                                <select id="defaultSelect" class="selectpicker" data-width="100%" required>
+                                <select id="courseCategory" class="selectpicker" data-width="100%" name="courseCategory" required>
                                     <option value="">Select category</option>
                                     <option value="React">React</option>
                                     <option value="Javascript">Javascript</option>
                                     <option value="HTML">HTML</option>
                                     <option value="Vue">Vue js</option>
-                                    <option value="Gulp">Gulp js</option>
+                                    <option value="Gatsby">Gatsby</option>
+                                    <option value="angular">Angular</option>
+                                    <option value="bootstrap">Bootstrap</option>
+                                    <option value="css">CSS</option>
+                                    <option value="laravel">Laravel</option>
+                                    <option value="node">Node</option>
+                                    <option value="python">Python</option>
+                                    <option value="Sass">Sass</option>
+                                    <option value="wordpress">WordPress</option>
                                 </select>
                                 <!-- <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder" data-toggle="dropdown" role="combobox" aria-owns="bs-select-1" aria-haspopup="listbox" aria-expanded="false" title="Select category">
                                         <div class="filter-option">
@@ -84,87 +110,50 @@
                             <small>Help people find your courses by choosing
                                 categories that represent your course.</small>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Courses level</label>
-                            <div class="dropdown bootstrap-select" style="width: 100%;">
-                                <select class="selectpicker" data-width="100%" required>
-                                    <option value="">Select level</option>
-                                    <option value="intermediate">Intermediate</option>
-                                    <option value="Beignners">Beignners</option>
-                                    <option value="Advance">Advance</option>
-                                </select>
-                                <!-- <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder" data-toggle="dropdown" role="combobox" aria-owns="bs-select-2" aria-haspopup="listbox" aria-expanded="false" title="Select level">
-                                        <div class="filter-option">
-                                            <div class="filter-option-inner">
-                                                <div class="filter-option-inner-inner">Select level</div>
-                                            </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label class="form-label">Courses level</label>
+                                <div class="dropdown bootstrap-select" style="width: 100%;">
+                                    <select class="selectpicker" data-width="100%" name="courseLevel" id="courseLevel" required>
+                                        <option value="">Select level</option>
+                                        <option value="0">Intermediate</option>
+                                        <option value="1">Beignners</option>
+                                        <option value="2">Advance</option>
+                                    </select>
+                                    <div class="dropdown-menu ">
+                                        <div class="inner show" role="listbox" id="bs-select-2" tabindex="-1">
+                                            <ul class="dropdown-menu inner show" role="presentation"></ul>
                                         </div>
-                                    </button> -->
-                                <div class="dropdown-menu ">
-                                    <div class="inner show" role="listbox" id="bs-select-2" tabindex="-1">
-                                        <ul class="dropdown-menu inner show" role="presentation"></ul>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <label for="courseTitle" class="form-label">Course Fees</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">₹</span>
+                                    </div>
+                                    <input id="courseFees" type="number" placeholder="₹0.00" class="form-control" aria-label="Amount (to the nearest rupees)">
+                                </div>
+
+                            </div>
                         </div>
+                        <!-- <div class="form-group row">
+                            <div class="col-md-6">
+                                <label for="courseTitle" class="form-label">Course Fees</label>
+                                <input id="courseTitle" class="form-control" type="text" placeholder="Course Title" name="courseTitle" required>
+                                <small>Write a 60 character course title.</small>
+                            </div>
+                            <div class="col-md-6">
+
+                                <label for="courseTitle" class="form-label">Course Duration</label>
+                                <input id="courseDuration" class="form-control" type="time" required>
+                            </div>
+                        </div> -->
+
                         <div class="form-group">
                             <label class="form-label">Course Description</label>
-                            <!-- <div class="ql-toolbar ql-snow">
-                                    <span class="ql-formats">
-                                        <span class="ql-header ql-picker"><span class="ql-picker-label" tabindex="0" role="button" aria-expanded="false" aria-controls="ql-picker-options-0">
-                                                <svg viewBox="0 0 18 18">
-                                                    <polygon class="ql-stroke" points="7 11 9 13 11 11 7 11"></polygon>
-                                                    <polygon class="ql-stroke" points="7 7 9 5 11 7 7 7"></polygon>
-                                                </svg></span><span class="ql-picker-options" aria-hidden="true" tabindex="-1" id="ql-picker-options-0"><span tabindex="0" role="button" class="ql-picker-item" data-value="1"></span><span tabindex="0" role="button" class="ql-picker-item" data-value="2"></span><span tabindex="0" role="button" class="ql-picker-item" data-value="3"></span><span tabindex="0" role="button" class="ql-picker-item"></span></span></span><select class="ql-header" style="display: none;">
-                                            <option value="1"></option>
-                                            <option value="2"></option>
-                                            <option value="3"></option>
-                                            <option selected="selected"></option>
-                                        </select>
-                                    </span>
-                                    <span class="ql-formats">
-                                        <button type="button" class="ql-bold">
-                                            <svg viewBox="0 0 18 18">
-                                                <path class="ql-stroke" d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z"></path>
-                                                <path class="ql-stroke" d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z"></path>
-                                            </svg></button><button type="button" class="ql-italic"><svg viewBox="0 0 18 18">
-                                                <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
-                                                <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
-                                                <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
-                                            </svg></button><button type="button" class="ql-underline"><svg viewBox="0 0 18 18">
-                                                <path class="ql-stroke" d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path>
-                                                <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect>
-                                            </svg></button><button type="button" class="ql-link"><svg viewBox="0 0 18 18">
-                                                <line class="ql-stroke" x1="7" x2="11" y1="7" y2="11"></line>
-                                                <path class="ql-even ql-stroke" d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z"></path>
-                                                <path class="ql-even ql-stroke" d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z"></path>
-                                            </svg>
-                                        </button>
-                                    </span>
-                                    <span class="ql-formats">
-                                        <button type="button" class="ql-list" value="ordered"><svg viewBox="0 0 18 18">
-                                                <line class="ql-stroke" x1="7" x2="15" y1="4" y2="4"></line>
-                                                <line class="ql-stroke" x1="7" x2="15" y1="9" y2="9"></line>
-                                                <line class="ql-stroke" x1="7" x2="15" y1="14" y2="14"></line>
-                                                <line class="ql-stroke ql-thin" x1="2.5" x2="4.5" y1="5.5" y2="5.5"></line>
-                                                <path class="ql-fill" d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"></path>
-                                                <path class="ql-stroke ql-thin" d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"></path>
-                                                <path class="ql-stroke ql-thin" d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109"></path>
-                                            </svg></button><button type="button" class="ql-list" value="bullet"><svg viewBox="0 0 18 18">
-                                                <line class="ql-stroke" x1="6" x2="15" y1="4" y2="4"></line>
-                                                <line class="ql-stroke" x1="6" x2="15" y1="9" y2="9"></line>
-                                                <line class="ql-stroke" x1="6" x2="15" y1="14" y2="14"></line>
-                                                <line class="ql-stroke" x1="3" x2="3" y1="4" y2="4"></line>
-                                                <line class="ql-stroke" x1="3" x2="3" y1="9" y2="9"></line>
-                                                <line class="ql-stroke" x1="3" x2="3" y1="14" y2="14"></line>
-                                            </svg></button></span><span class="ql-formats"><button type="button" class="ql-clean"><svg class="" viewBox="0 0 18 18">
-                                                <line class="ql-stroke" x1="5" x2="13" y1="3" y2="3"></line>
-                                                <line class="ql-stroke" x1="6" x2="9.35" y1="12" y2="3"></line>
-                                                <line class="ql-stroke" x1="11" x2="15" y1="11" y2="15"></line>
-                                                <line class="ql-stroke" x1="15" x2="11" y1="11" y2="15"></line>
-                                                <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="7" x="2" y="14"></rect>
-                                            </svg></button></span>
-                                </div> -->
+
                             <div id="editor" class="ql-container ql-snow">
                                 <div class="ql-editor" data-gramm="false" contenteditable="true">
                                     <p>Insert course description</p>
@@ -174,7 +163,7 @@
                                 <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
                                 <div class="ql-tooltip ql-hidden">
                                     <a class="ql-preview" rel="noopener noreferrer" target="_blank" href="about:blank"></a>
-                                    <input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL" required>
+                                    <input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL" name="courseBigDesc" required>
                                     <a class="ql-action"></a>
                                     <a class="ql-remove"></a>
                                 </div>
@@ -183,11 +172,11 @@
 
                         </div>
                         <div style="display: flex;    gap: 1rem;    justify-content: flex-end;">
-                        <input type="hidden" id="course_id">
-                            <button type="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="hidden" id="course_id">
                             <input type="reset" class="btn btn-primary" id="clearText" value="clear" onclick="$('.selectpicker').selectpicker('refresh');"></input>
+                            <button type="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <input type="submit" class="btn btn-primary" id="addCourseBtn" value="Add course"></input>
-                            
+
                         </div>
                     </form>
 
@@ -197,7 +186,7 @@
         </div>
     </div>
 
-    
+
     <!-- addcourse modal end from here -->
 
 
@@ -597,7 +586,7 @@
                                                     </span>
                                                 </span>
                                             </td>
-                                        </tr> --> 
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>

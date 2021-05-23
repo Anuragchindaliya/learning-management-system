@@ -62,6 +62,11 @@
 <!-- datatable jQuery -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
+<!-- for duration -->
+<!-- <script src="../../assets/libs/html-duration/dist/html-duration-picker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html-duration-picker/dist/html-duration-picker.min.js"></script> -->
+
+
 <!-- ajax reqest for admin sign in -->
 <!-- <script src="geeks/admin/adminajax.js"></script> -->
 <script src="../../assets/js/courseajax.js"></script>

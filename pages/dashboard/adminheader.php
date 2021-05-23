@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -46,6 +47,8 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
 
     <!-- databale css -->
 
+    <!-- time duration -->
+    <!-- <link rel="stylesheet" href="../../assets/libs/html-duration/dist/html-duration-picker.min.js"> -->
 
 
     <!-- Theme CSS -->

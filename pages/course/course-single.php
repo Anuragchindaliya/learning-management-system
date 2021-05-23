@@ -1,5 +1,16 @@
+<?php include '../../dbcon.php';?>
 <base href="../../">
-<?php include "../../../geeks/header.php" ?>
+<?php include "../../../geeks/header.php";
+
+if(isset($_GET['course_id'])){
+    $course_id =$_GET['course_id'];
+    $sql="SELECT * FROM course WHERE course_id='$course_id'";
+    $result=$conn->query($sql);
+    $row=$result->fetch_assoc();
+}else{
+    echo("<script>location.href = 'http://localhost/geeks-online';</script>");
+}
+?>
 
 
 <!-- Page header -->
@@ -8,10 +19,9 @@
         <div class="row align-items-center">
             <div class="col-xl-7 col-lg-7 col-md-12">
                 <div>
-                    <h1 class="text-white display-4 font-weight-semi-bold">Getting Started with JavaScript</h1>
+                    <h1 class="text-white display-4 font-weight-semi-bold"><?= $row['course_name']?></h1>
                     <p class="text-white mb-6 lead">
-                        JavaScript is the popular programming language which powers web pages and web applications. This
-                        course will get you started coding in JavaScript.
+                        <?= $row['course_desc']?>
                     </p>
                     <div class="d-flex align-items-center">
                         <a href="#!" class="bookmark text-white text-decoration-none">
@@ -35,7 +45,15 @@
                                 <rect x="11" y="2" width="2" height="12" rx="1" fill="#DBD8E9"></rect>
                             </svg>
                             <span class="align-middle">
-                                Intermediate
+                                <?php
+                                    if($row['course_level']==0){
+                                        echo 'Beginner';
+                                    }elseif($row['course_level']==1){
+                                        echo 'Intermidiate';
+                                    }elseif($row['course_level']==2){
+                                        echo 'Advance';
+                                    }
+                                ?>
                             </span>
                         </span>
                     </div>
@@ -1631,7 +1649,7 @@
                 <div class="card mb-3 mb-4">
                     <div class="p-1">
                         <div class="d-flex justify-content-center position-relative rounded py-10 border-white border rounded-lg bg-cover"
-                            style="background-image: url(assets/images/course/course-javascript.jpg);">
+                            style="background-image: url(assets/images/course/course-<?=$row['course_category'] ?>.jpg);">
                             <a class="popup-youtube icon-shape rounded-circle btn-play icon-xl text-decoration-none"
                                 href="https://www.youtube.com/watch?v=JRzWRZahOVU">
                                 <i class="fe fe-play"></i>
