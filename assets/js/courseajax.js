@@ -14,6 +14,7 @@ $(document).ready(function () {
         
         var course_title = $("#courseTitle").val();
         var course_desc = $("#courseDesc").val();
+        var course_url = $("#courseUrl").val();
         var course_id = $("#course_id").val();
         var course_admin = $("#adminName").text().trim();
         var course_image = $("#courseImage").val();
@@ -21,6 +22,7 @@ $(document).ready(function () {
         var course_level = $("#courseLevel").val();
         // var course_fees = new Intl.NumberFormat('en-IN').format($("#courseFees").val());
         var course_fees = $("#courseFees").val();
+        
         
         $.ajax({
             url: "../../admin/adminprocess.php",
@@ -35,12 +37,14 @@ $(document).ready(function () {
                 course_image:course_image,
                 course_category:course_category,
                 course_level:course_level,
-                course_fees:course_fees
+                course_fees:course_fees,
+                course_url:course_url
             },
             // processData:false,
             // contentType:false,
             beforeSend:function(){
-                console.log("Wait...")
+                console.log("Wait...");
+                console.log(course_url);
             },
             success: function (data) {
                 console.log(data);
@@ -177,10 +181,17 @@ function editCourse(Id){
         },
         success:function(data){
             var courseDetails = JSON.parse(data);
-            console.log(courseDetails);
+            // console.log(courseDetails);
            $("#courseTitle").val(courseDetails.course_name);
          $("#courseDesc").val(courseDetails.course_desc);
+         $("#courseUrl").val(courseDetails.course_url);
          $("#course_id").val(courseDetails.course_id);
+         $("#courseImage").val(courseDetails.course_image);
+         //trigger change is important here
+         $("#courseCategory").val(courseDetails.course_category).trigger('change');
+         $("#courseLevel").val(courseDetails.course_level).trigger('change');
+         $("#courseFees").val(courseDetails.course_price);
+        //  $("#courseFees").val(courseDetails.course_price);
         }
     })
 

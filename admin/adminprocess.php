@@ -46,6 +46,7 @@ if (isset($_SESSION)) {
         $course_category = $_POST['course_category'];
         $course_level = $_POST['course_level'];
         $course_fees = $_POST['course_fees'];
+        $course_url = $_POST['course_url'];
        
 
 
@@ -85,7 +86,7 @@ if (isset($_SESSION)) {
 
 
 
-        $sql = "INSERT INTO `course` (`course_id`,`course_name`, `course_desc`, `course_category`, `course_level`, `course_author`,`course_img`,`course_price`) VALUES ('$course_id','$courseTitle','$courseDesc','$course_category','$course_level','$adminName','$course_image','$course_fees') on duplicate key update `course_name`='$courseTitle',`course_desc`='$courseDesc',`course_category`='$course_category',`course_level`='$course_level', `course_author`='$adminName',`course_img`='$course_image',`course_price`='$course_fees'";
+        $sql = "INSERT INTO `course` (`course_id`,`course_name`, `course_desc`,`course_url`, `course_category`, `course_level`, `course_author`,`course_img`,`course_price`) VALUES ('$course_id','$courseTitle','$courseDesc','$course_url','$course_category','$course_level','$adminName','$course_image','$course_fees') on duplicate key update `course_name`='$courseTitle',`course_desc`='$courseDesc',`course_url`='$course_url',`course_category`='$course_category',`course_level`='$course_level', `course_author`='$adminName',`course_img`='$course_image',`course_price`='$course_fees'";
         $result = $conn->query($sql);
 
         if ($result) {
@@ -143,13 +144,13 @@ if (isset($_POST['readFlag'])) {
                                         <a href="#!" class="text-inherit">
                                             <div class="d-lg-flex align-items-center">
                                                 <div>
-                                                    <img src="../../assets/images/course/course-gatsby.jpg" alt="" class="img-4by3-lg rounded" />
+                                                    <img src="../../assets/images/course/course-'.$row['course_category'].'.jpg" alt="" class="img-4by3-lg rounded" />
                                                 </div>
                                                 <div class="ml-lg-3 mt-2 mt-lg-0">
                                                     <h4 class="mb-1 text-primary-hover">
                                                         ' . $row['course_name'] . '
                                                     </h4>
-                                                    <span class="text-inherit">Added on ' . date('d M, y h:i A ', strtotime($row['created_at'])) . '</span>
+                                                    <span class="text-inherit">Added on ' . date('d M, y | h:i A ', strtotime($row['created_at'])) . '</span>
                                                 </div>
                                             </div>
                                         </a>

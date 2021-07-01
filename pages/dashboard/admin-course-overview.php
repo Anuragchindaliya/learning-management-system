@@ -55,6 +55,11 @@
                             <input id="courseDesc" class="form-control" type="text" placeholder="Course Description" name="courseDescription" required>
                             <small>Write a 250 character course description.</small>
                         </div>
+                        <div class="form-group">
+                            <label for="courseUrl" class="form-label">Course Video URL</label>
+                            <input id="courseUrl" class="form-control" type="url" placeholder="https://www.youtube.com/watch?v=BLl32FvcdVM" name="courseDescription" required>
+                                <small>Drop only Video ID not ChannelName.</small>
+                        </div>
 
                         <div class="form-group">
                             <label for="courseImage" class="form-label">Course Image</label>
@@ -80,11 +85,11 @@
                             <div class="dropdown bootstrap-select" style="width: 100%;">
                                 <select id="courseCategory" class="selectpicker" data-width="100%" name="courseCategory" required>
                                     <option value="">Select category</option>
-                                    <option value="React">React</option>
-                                    <option value="Javascript">Javascript</option>
-                                    <option value="HTML">HTML</option>
+                                    <option value="react">React</option>
+                                    <option value="javascript">Javascript</option>
+                                    <option value="html">HTML</option>
                                     <option value="Vue">Vue js</option>
-                                    <option value="Gatsby">Gatsby</option>
+                                    <option value="gatsby">Gatsby</option>
                                     <option value="angular">Angular</option>
                                     <option value="bootstrap">Bootstrap</option>
                                     <option value="css">CSS</option>
@@ -101,11 +106,11 @@
                                             </div>
                                         </div>
                                     </button> -->
-                                <div class="dropdown-menu ">
+                                <!-- <div class="dropdown-menu ">
                                     <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1">
                                         <ul class="dropdown-menu inner show" role="presentation"></ul>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <small>Help people find your courses by choosing
                                 categories that represent your course.</small>

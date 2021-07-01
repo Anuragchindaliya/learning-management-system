@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2021 at 01:35 PM
+-- Generation Time: May 24, 2021 at 01:08 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,27 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `epiz_28626503_geek`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL,
-  `admin_name` varchar(255) COLLATE utf8_bin NOT NULL,
-  `admin_email` varchar(255) COLLATE utf8_bin NOT NULL,
-  `admin_pass` varchar(255) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`) VALUES
-(1, 'sunil', 'sunil@gmail.com', 'sunil'),
-(2, 'Ankush', 'ankush@gmail.com', 'ankush');
 
 -- --------------------------------------------------------
 
@@ -77,39 +56,9 @@ INSERT INTO `course` (`course_id`, `course_name`, `course_desc`, `course_categor
 (84, 'sass Lang', 'css preprocessor', 'css', '2', 'sunil', 'C:fakepath19350.jpg', 0, 0, 3999, '2021-05-23 15:39:49'),
 (85, 'HTML : Advance html', 'html from beginner to advance', 'html', '2', 'sunil', 'C:fakepath19350.jpg', 0, 0, 8555, '2021-05-24 11:05:35');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `stu_id` int(11) NOT NULL,
-  `stu_name` varchar(255) COLLATE utf8_bin NOT NULL,
-  `stu_email` varchar(255) COLLATE utf8_bin NOT NULL,
-  `stu_pass` varchar(255) COLLATE utf8_bin NOT NULL,
-  `stu_occ` varchar(255) COLLATE utf8_bin NOT NULL,
-  `stu_img` text COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `student`
---
-
-INSERT INTO `student` (`stu_id`, `stu_name`, `stu_email`, `stu_pass`, `stu_occ`, `stu_img`) VALUES
-(1, 'Anurag', 'anurag@gmail.com', 'Anurag', '', ''),
-(2, 'akshay', 'akshay@gmail.com', 'akshay', '', ''),
-(3, 'vinay', 'vinay@gmail.com', 'vinay', '', '');
-
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `course`
@@ -118,32 +67,14 @@ ALTER TABLE `course`
   ADD PRIMARY KEY (`course_id`);
 
 --
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`stu_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
   MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
-
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `stu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
