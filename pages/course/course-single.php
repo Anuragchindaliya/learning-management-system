@@ -7,18 +7,27 @@ if (isset($_GET['course_id'])) {
     $course_id = $_GET['course_id'];
     $sql = "SELECT * FROM course WHERE course_id='$course_id'";
     $result = $conn->query($sql);
-    $row = $result->fetch_assoc();
-    // total course of a author
-    $author = $row['course_author'];
-    $countQuery = $conn->query("SELECT COUNT(*) total FROM course WHERE course_author='$author'");
-    $totalCourse = $countQuery->fetch_assoc();
-    $totalResult = $totalCourse['total'];
 
-    // total student
-    $countStudent = $conn->query("select count(*) as students from student");
-    $fetchStudent = $countStudent->fetch_assoc();
-    $totalStudent = $fetchStudent['students'];
+    $row = $result->fetch_assoc();
+    if ($course_id != $row['course_id']) {
+        echo ("<script>location.href = 'http://localhost/geeks-online';</script>");
+    } else {
+        // course view count
+        $viewSql = $conn->query("UPDATE course set view_count = view_count+1 where course_id = $course_id");
+
+        // total course of a author
+        $author = $row['course_author'];
+        $countQuery = $conn->query("SELECT COUNT(*) total FROM course WHERE course_author='$author'");
+        $totalCourse = $countQuery->fetch_assoc();
+        $totalResult = $totalCourse['total'];
+
+        // total student
+        $countStudent = $conn->query("select count(*) as students from student");
+        $fetchStudent = $countStudent->fetch_assoc();
+        $totalStudent = $fetchStudent['students'];
+    }
 } else {
+    
     echo ("<script>location.href = 'http://localhost/geeks-online';</script>");
 }
 ?>
@@ -548,9 +557,9 @@ if (isset($_GET['course_id'])) {
                             </del>
                         </div>
                         <a class="popup-youtube btn btn-primary btn-block icon-shape  text-decoration-none" href="<?= $row['course_url'] ?>">
-                        Start Free Month
+                            Start Free Month
                         </a>
-                        
+
                         <a href="pricing.html" class="btn btn-outline-primary btn-block">Get Full Access</a>
                     </div>
                 </div>
