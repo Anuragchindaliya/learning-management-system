@@ -228,7 +228,7 @@
                         <span class="position-absolute pl-3 search-icon">
                             <i class="fe fe-search"></i>
                         </span>
-                        <input type="search" class="form-control pl-6" placeholder="Search Course" />
+                        <input type="search" id="live-search" class="form-control pl-6" placeholder="Search Course" />
                     </form>
                 </div>
                 <div>
