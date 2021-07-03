@@ -65,7 +65,7 @@ $(document).ready(function () {
 
   // live search
   $("#live-search").on("keyup", function () {
-    console.log("helo");
+    
     var search_term = $(this).val();
     var course_admin = $("#adminName").text().trim();
     $.ajax({
@@ -82,6 +82,7 @@ $(document).ready(function () {
       },
     });
   });
+  
 });
 
 //image validation

@@ -780,15 +780,15 @@
                         </div>
                     </li>
                 </ul>
-                <form class="mt-3 mt-lg-0 ml-lg-3 d-flex align-items-center">
+
+                <form class="mt-3 mt-lg-0 ml-lg-3 d-flex align-items-center" action="./search.php">
                     <span class="position-absolute pl-3 search-icon">
                         <i class="fe fe-search"></i>
                     </span>
-                    <input type="search" class="form-control pl-6" placeholder="Search Courses" />
+                    <input type="search" class="form-control pl-6" name="q" placeholder="Search Courses" value="<?php if (isset($_GET['q'])) {
+                                                                                                                    echo $_GET['q'];
+                                                                                                                } ?>" />
                 </form>
-
-
-
                 <!-- signin modal start from here -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelOne" aria-hidden="true">
                     <div class="modal-dialog" role="document">
