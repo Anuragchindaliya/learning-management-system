@@ -27,7 +27,6 @@ if (isset($_GET['course_id'])) {
         $totalStudent = $fetchStudent['students'];
     }
 } else {
-    
     echo ("<script>location.href = 'http://localhost/geeks-online';</script>");
 }
 ?>
@@ -41,7 +40,7 @@ if (isset($_GET['course_id'])) {
                 <div>
                     <h1 class="text-white display-4 font-weight-semi-bold"><?= $row['course_name'] ?></h1>
                     <p class="text-white mb-6 lead">
-                        <?= $row['course_desc'] ?>
+                        <?= substr($row['course_desc'],0,54) ?>...
                     </p>
                     <div class="d-flex align-items-center">
                         <a href="#!" class="bookmark text-white text-decoration-none">
@@ -95,10 +94,10 @@ if (isset($_GET['course_id'])) {
                             <!-- Nav -->
                             <ul class="nav nav-lb-tab" id="tab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="table-tab" data-toggle="pill" href="#table" role="tab" aria-controls="table" aria-selected="true">Contents</a>
+                                    <a class="nav-link active" id="table-tab" data-toggle="pill" href="#table" role="tab" aria-controls="table" aria-selected="true">Description</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="description-tab" data-toggle="pill" href="#description" role="tab" aria-controls="description" aria-selected="false">Description</a>
+                                    <a class="nav-link" id="description-tab" data-toggle="pill" href="#description" role="tab" aria-controls="description" aria-selected="false">Contents</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="review-tab" data-toggle="pill" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews</a>
@@ -120,7 +119,10 @@ if (isset($_GET['course_id'])) {
                                 <div class="accordion" id="courseAccordion">
                                     <div>
                                         <h1><?= ucFirst($row['course_name']) ?></h1>
-                                        <p><?= $row['course_desc'] ?></p>
+                                        <p>
+                                        <?= substr(nl2br(htmlspecialchars_decode($row['course_desc'])),0,1830); ?>......
+                                        
+                                        </p>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <b>Difficulty level : </b>
@@ -154,7 +156,8 @@ if (isset($_GET['course_id'])) {
                             </div>
                             <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
                                 <!-- Description -->
-                                <?= $row['course_desc'] ?>
+                                
+                                <?= nl2br($row['course_desc']); ?>
                                 <!-- <div class="mb-4">
                                     <h3 class="mb-2">Course Descriptions</h3>
                                     <p>
@@ -560,7 +563,7 @@ if (isset($_GET['course_id'])) {
                             Start Free Month
                         </a>
 
-                        <a href="pricing.html" class="btn btn-outline-primary btn-block">Get Full Access</a>
+                        <a href="<?= $row['course_url'] ?>" target="_blank" class="btn btn-outline-primary btn-block">Get Full Access</a>
                     </div>
                 </div>
                 <!-- Card -->
@@ -619,7 +622,7 @@ if (isset($_GET['course_id'])) {
                         </div>
                         <p>I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at
                             Figma explored the city of the future and how new technologies.</p>
-                        <a href="instructor-profile.html" class="btn btn-outline-white btn-sm">View Details</a>
+                        <a href="instructor-profile.php" class="btn btn-outline-white btn-sm">View Details</a>
                     </div>
                 </div>
             </div>

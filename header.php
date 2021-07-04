@@ -785,9 +785,10 @@
                     <span class="position-absolute pl-3 search-icon">
                         <i class="fe fe-search"></i>
                     </span>
-                    <input type="search" class="form-control pl-6" name="q" placeholder="Search Courses" value="<?php if (isset($_GET['q'])) {
-                                                                                                                    echo $_GET['q'];
-                                                                                                                } ?>" />
+                    <input type="search" class="form-control pl-6" name="q" placeholder="Search Courses" 
+                    value="<?php if (isset($_GET['q'])) {
+                        echo $_GET['q'];
+                        } ?>" />
                 </form>
                 <!-- signin modal start from here -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelOne" aria-hidden="true">

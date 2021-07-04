@@ -52,7 +52,7 @@
 
                         <div class="form-group">
                             <label for="courseDesc" class="form-label">Course Description</label>
-                            <input id="courseDesc" class="form-control" type="text" placeholder="Course Description" name="courseDescription" required>
+                            <textarea id="courseDesc" class="form-control" placeholder="Course Description" name="courseDescription" required></textarea>
                             <small>Write a 250 character course description.</small>
                         </div>
                         <div class="form-group">
@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <label for="courseImage" class="form-label">Course Image</label>
                             <div class="form-group d-grid" style="grid-template-columns: 70% 30%;">
-                                <input id="courseImage" class="form-control" type="file" placeholder="Course Image" name="coursePhoto" required>
+                                <input id="courseImage" class="form-control" type="file" placeholder="Course Image" name="coursePhoto">
                                 <label id="setImage" class="btn btn-primary" onclick="checkImage($('#setImage'))">Upload image</label>
                                 <small>Image should less than 100kb*</small>
                             </div>
@@ -156,7 +156,7 @@
                             </div>
                         </div> -->
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="form-label">Course Description</label>
 
                             <div id="editor" class="ql-container ql-snow">
@@ -175,7 +175,7 @@
                             </div>
                             <small>A brief summary of your courses.</small>
 
-                        </div>
+                        </div> -->
                         <div style="display: flex;    gap: 1rem;    justify-content: flex-end;">
                             <input type="hidden" id="course_id">
                             <input type="reset" class="btn btn-primary" id="clearText" value="clear" onclick="$('.selectpicker').selectpicker('refresh');"></input>
