@@ -115,6 +115,7 @@
                             <small>Help people find your courses by choosing
                                 categories that represent your course.</small>
                         </div>
+                       
                         <div class="form-group row">
                             <div class="col-md-6">
                                 <label class="form-label">Courses level</label>
@@ -1011,7 +1012,5 @@
 </div>
 </div>
 <!-- Scripts -->
-<!-- Libs JS -->
-
 
 <?php include_once "adminfooter.php"; ?>

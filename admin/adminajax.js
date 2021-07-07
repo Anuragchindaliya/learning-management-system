@@ -22,11 +22,9 @@ $(document).ready(function () {
                         window.location.href = "../pages/dashboard/admin-dashboard.php";
                     }, 1000);
                 }
-
             }
         });
 
         event.preventDefault();
     });
-
 });

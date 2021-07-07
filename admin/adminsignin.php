@@ -1,4 +1,4 @@
-<<?php 
+<?php 
 session_start();
 if (isset($_SESSION['is_admin_login'])){
   if($_SESSION['is_admin_login'] == true) {
@@ -132,7 +132,4 @@ if (isset($_SESSION['is_admin_login'])){
 <!-- ajax reqest for admin sign in -->
 <script src="adminajax.js"></script>
 </body>
-
-
-<!-- Mirrored from codescandy.com/geeks/pages/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 28 Apr 2021 18:14:26 GMT -->
 </html>

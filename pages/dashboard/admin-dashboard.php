@@ -38,7 +38,15 @@
                         </div>
                     </div>
                     <h2 class="font-weight-bold mb-1">
-                        $10,800
+                    <!-- ₹ -->
+                    <?php
+                        include "../../dbcon.php";
+                        $author = $_SESSION['admin_name'];
+                        $sql = "SELECT count(*) as totalCourse FROM course where course_author='$author'";
+                        $result = $conn->query($sql);
+                        $data = $result->fetch_assoc();
+                        echo $data['totalCourse'];
+                        ?>
                     </h2>
                     <span class="text-success font-weight-semi-bold"><i class="fe fe-trending-up mr-1"></i>+20.9$</span>
                     <span class="ml-1 font-weight-medium">Number of sales</span>
@@ -59,7 +67,12 @@
                         </div>
                     </div>
                     <h2 class="font-weight-bold mb-1">
-                        2,456
+                        <?php
+                        $sql = "SELECT count(*) as totalCourse FROM course";
+                        $result = $conn->query($sql);
+                        $data = $result->fetch_assoc();
+                        echo $data['totalCourse'];
+                        ?>
                     </h2>
                     <span class="text-danger font-weight-semi-bold">120+</span>
                     <span class="ml-1 font-weight-medium">Number of pending</span>
@@ -80,7 +93,12 @@
                         </div>
                     </div>
                     <h2 class="font-weight-bold mb-1">
-                        1,22,456
+                        <?php
+                        $sql = "SELECT count(*) as totalStu FROM student";
+                        $result = $conn->query($sql);
+                        $data = $result->fetch_assoc();
+                        echo $data['totalStu'];
+                        ?>
                     </h2>
                     <span class="text-success font-weight-semi-bold"><i class="fe fe-trending-up mr-1"></i>+1200</span>
                     <span class="ml-1 font-weight-medium">Students</span>
@@ -101,7 +119,12 @@
                         </div>
                     </div>
                     <h2 class="font-weight-bold mb-1">
-                        22,786
+                    <?php
+                        $sql = "SELECT count(*) as totalAdmin FROM `admin`";
+                        $result = $conn->query($sql);
+                        $data = $result->fetch_assoc();
+                        echo $data['totalAdmin'];
+                        ?>
                     </h2>
                     <span class="text-success font-weight-semi-bold"><i class="fe fe-trending-up mr-1"></i>+200</span>
                     <span class="ml-1 font-weight-medium">Instructor</span>

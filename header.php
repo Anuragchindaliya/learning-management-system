@@ -40,7 +40,6 @@
     <!-- Bootstrap-select is a jQuery plugin that overhauls select elements to improve their appearance and expand their functionality. -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.0/magnific-popup.min.css" integrity="sha512-nIm/JGUwrzblLex/meoxJSPdAKQOe2bLhnrZ81g5Jbh519z8GFJIWu87WAhBH+RAyGbM4+U3S2h+kL5JoV6/wA==" crossorigin="anonymous" />
 
     <!-- lightweight, efficient Tags input component in Vanilla JS / React / Angular [super customizable, tiny size & top performance -->
@@ -49,13 +48,8 @@
     <!-- Vanilla javascript slider for all purposes, inspired by Owl Carousel. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.min.css" integrity="sha512-06CZo7raVnbbD3BlY8/hGUoUCuhk8sTdVGV3m3nuh9i2R+UmkLbLRTE/My8TuJ3ALbDulhBObJQWtOUt0mXzNQ==" crossorigin="anonymous" />
 
-
     <!-- Vanilla JS Tooltip Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.css" integrity="sha512-wYhtIFU+mDV48662uSmS8BA6uIuSRXB15B014+WdZgtU1Umfn/v8+Yq3hidRunKqTBmhBijyyuqSzCxmj6KlTg==" crossorigin="anonymous" />
-
-
-
-
 
     <title>Geeks Academy by Anurag</title>
 </head>
@@ -64,9 +58,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-default">
         <div class="container-fluid px-0">
-            <a class="navbar-brand" href="./"><img src="assets/images/brand/logo/logo.svg" alt="" /></a>
-
-
+            <a class="navbar-brand" href="./">
+            <img src="assets/images/brand/logo/logo.svg" alt="" /></a>
             <?php if (isset($_SESSION['is_login'])) { ?>
                 <!-- Mobile view nav wrap -->
                 <ul class="navbar-nav navbar-right-wrap ml-auto d-lg-none d-flex nav-top-wrap">

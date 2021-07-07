@@ -3,7 +3,7 @@ include "./dbcon.php";
 
 $search_term = $_GET['q'];
 
-$sql = "SELECT * FROM `course` WHERE course_name LIKE '%{$search_term}%'";
+$sql = "SELECT DISTINCT * FROM `course` WHERE UPPER(course_name) LIKE UPPER('%{$search_term}%')";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
