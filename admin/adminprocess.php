@@ -1,8 +1,19 @@
 <?php
+include "../dbcon.php";
+// FILTER_SANITIZE_STRING for data validation
+function test_input($data){
+    $data=trim($data);
+    $data=stripslashes($data);
+    $data=htmlspecialchars($data);
+    return $data;
+    }
+
 if (!isset($_SESSION)) {
     session_start();
 }
-include "../dbcon.php";
+
+
+
 
 #################
 // admin login 
@@ -14,8 +25,8 @@ if (!isset($_SESSION['is_admin_login'])) {
     if (isset($_POST['adminLogIn']) && isset($_POST['adminEmail']) && isset($_POST['adminPassword'])) {
 
 
-        $adminEmail = $_POST['adminEmail'];
-        $adminPassword = $_POST['adminPassword'];
+        $adminEmail = test_input($_POST['adminEmail']);
+        $adminPassword = test_input($_POST['adminPassword']);
         $sql = "SELECT admin_name,admin_email,admin_pass FROM admin WHERE admin_email = '$adminEmail' AND admin_pass = '$adminPassword' ";
         $result = $conn->query($sql);
         $row = $result->num_rows;
@@ -36,8 +47,8 @@ if (!isset($_SESSION['is_admin_login'])) {
 // live search 
 #############################
 if(isset($_POST['check'])&& $_POST['check']=="search"){
-    $adminName = $_POST['course_admin'];
-    $search_term = $_POST['search'];
+    $adminName = test_input($_POST['course_admin']);
+    $search_term = test_input($_POST['search']);
     $data = '<table class="table mb-0 text-nowrap" id="course_table">
             <thead>
                 <tr>
@@ -56,7 +67,8 @@ if(isset($_POST['check'])&& $_POST['check']=="search"){
                     <th scope="col" class="border-0 text-uppercase"></th>
                 </tr>
             </thead>';
-    $displayquery = "SELECT * FROM `course` WHERE course_name LIKE '%{$search_term}%'";
+            
+    $displayquery = "SELECT DISTINCT * FROM `course` WHERE UPPER(course_name) LIKE UPPER('%{$search_term}%')";
     $displayResult = $conn->query($displayquery);
 
     if ($displayResult->num_rows > 0) {
@@ -125,15 +137,15 @@ if(isset($_POST['check'])&& $_POST['check']=="search"){
 if (isset($_SESSION)) {
     if (isset($_POST['add_course']) && $_POST['add_course'] == 'add_course') {
         // sleep(3);
-        $courseTitle = $_POST['course_title'];
-        $courseDesc = $_POST['course_desc'];
-        $adminName = $_POST['course_admin'];
-        $course_id = $_POST['course_id'];
-        $course_image = $_POST['course_image'];
-        $course_category = $_POST['course_category'];
-        $course_level = $_POST['course_level'];
-        $course_fees = $_POST['course_fees'];
-        $course_url = $_POST['course_url'];
+        $courseTitle = test_input($_POST['course_title']);
+        $courseDesc = test_input($_POST['course_desc']);
+        $adminName = test_input($_POST['course_admin']);
+        $course_id = test_input($_POST['course_id']);
+        $course_image = test_input($_POST['course_image']);
+        $course_category = test_input($_POST['course_category']);
+        $course_level = test_input($_POST['course_level']);
+        $course_fees = test_input($_POST['course_fees']);
+        $course_url = test_input($_POST['course_url']);
        
 
 
@@ -187,7 +199,7 @@ if (isset($_SESSION)) {
 
 // retrieve course from database
 if (isset($_POST['readFlag'])) {
-    $adminName = $_POST['course_admin'];
+    $adminName = test_input($_POST['course_admin']);
     $data = '<table class="table mb-0 text-nowrap" id="course_table">
             <thead>
                 <tr>
@@ -270,7 +282,7 @@ if (isset($_POST['readFlag'])) {
 // Delete course from database
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 if (isset($_POST['deleteId'])) {
-    $deleteId = $_POST['deleteId'];
+    $deleteId = test_input($_POST['deleteId']);
 
     $deleteQuery = "DELETE FROM `course` WHERE course_id = '$deleteId'";
     $conn->query($deleteQuery);
@@ -279,7 +291,7 @@ if (isset($_POST['deleteId'])) {
 // get Details in input field from database
 
 if (isset($_POST['editId'])) {
-    $editId = $_POST['editId'];
+    $editId = test_input($_POST['editId']);
     $editQuery = "SELECT * FROM `course` WHERE course_id = '$editId'";
     $result = $conn->query($editQuery);
     $data = $result->fetch_assoc();

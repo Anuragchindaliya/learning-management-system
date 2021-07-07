@@ -49,7 +49,7 @@ INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_pass`) VALU
 --
 
 CREATE TABLE `course` (
-  `course_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL AUTO_INCREMENT,
   `course_name` varchar(255) COLLATE utf8_bin NOT NULL,
   `course_desc` longtext COLLATE utf8_bin NOT NULL,
   `course_url` varchar(255) COLLATE utf8_bin NOT NULL,

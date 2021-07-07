@@ -615,12 +615,12 @@ if (isset($_GET['course_id'])) {
                             </div>
                             <div class="col border-left">
                                 <div class="pr-1 pl-3 py-3">
-                                    <h5 class="mb-0">12,230</h5>
+                                    <h5 class="mb-0">1,230</h5>
                                     <span>Reviews</span>
                                 </div>
                             </div>
                         </div>
-                        <p>I am an Innovation designer focussing on UX/UI based in Berlin. As a creative resident at
+                        <p>I am an Innovation designer focussing on UX/UI based in Faridabad(Delhi NCR). As a creative resident at
                             Figma explored the city of the future and how new technologies.</p>
                         <a href="instructor-profile.php" class="btn btn-outline-white btn-sm">View Details</a>
                     </div>

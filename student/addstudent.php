@@ -6,7 +6,7 @@ include "../dbcon.php";
 
 // checking email is already register or not
 if (isset($_POST['checkemail']) && isset($_POST['stuemail'])) {
-    $stuemail = $_POST['stuemail'];
+    $stuemail = test_input($_POST['stuemail']);
     $sql = "SELECT stu_email FROM student WHERE stu_email ='" . $stuemail . "'";
     $result = $conn->query($sql);
     $row = $result->num_rows;
@@ -18,9 +18,9 @@ if (isset($_POST['checkemail']) && isset($_POST['stuemail'])) {
 
 if (isset($_POST['stusignup']) && isset($_POST['stuname']) && isset($_POST['stuemail']) && isset($_POST['stupassword'])) {
 
-    $stuname = $_POST['stuname'];
-    $stuemail = $_POST['stuemail'];
-    $stupassword = $_POST['stupassword'];
+    $stuname = test_input($_POST['stuname']);
+    $stuemail = test_input($_POST['stuemail']);
+    $stupassword = test_input($_POST['stupassword']);
     $sql = "INSERT INTO student (stu_name,stu_email,stu_pass) values ('$stuname','$stuemail','$stupassword')";
 
     if ($conn->query($sql) == true) {
