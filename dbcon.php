@@ -16,10 +16,5 @@ $conn = new mysqli($servername, $username, $password,$databaseName);
 
 
 // FILTER_SANITIZE_STRING for data validation
-function test_input($data){
-    $data=trim($data);
-    $data=stripslashes($data);
-    $data=htmlspecialchars($data);
-    return $data;
-    }
+
 ?>
