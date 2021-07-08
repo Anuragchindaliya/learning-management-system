@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 include "../dbcon.php";
-
+// FILTER_SANITIZE_STRING for data validation
 function test_input($data){
     $data=trim($data);
     $data=stripslashes($data);

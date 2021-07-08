@@ -12,7 +12,7 @@
                         Hand-picked Instructor and expertly crafted courses, designed for the modern students and
                         entrepreneur.
                     </p>
-                    <a href="pages/course/course-filter-list.php" class="btn btn-success">Browse Courses</a>
+                    <a href="./editor/index.html" class="btn btn-success">Static editor</a>
                     <a href="admin/adminsignin.php" class="btn btn-white instructor">Are You Instructor?</a>
                 </div>
             </div>

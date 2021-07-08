@@ -15,6 +15,6 @@ $conn = new mysqli($servername, $username, $password,$databaseName);
 // echo "Connected successfully";
 
 
-// FILTER_SANITIZE_STRING for data validation
+
 
 ?>
